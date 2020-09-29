@@ -1,0 +1,28 @@
+<h1 class="accent-color">{{field.label || field.name | translate}} <strong class="warn-color" *ngIf="field.required">*</strong></h1>
+
+<mat-accordion class="example-headers-align" [displayMode]="'flat'">
+    <mat-expansion-panel *ngFor="let item of Forms.controls; let i=index;">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <h5 class="warn-color mat-subheading-1"> {{field.label}} : {{i+1}}</h5>
+            </mat-panel-title>
+            <mat-panel-description>
+                <button mat-icon-button color="warn" (click)="removeRow(i)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button mat-icon-button color="primary" *ngIf="i+1===Forms.controls.length" (click)="addRow()">
+                    <mat-icon>plus_one</mat-icon>
+                </button>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-grid-list [cols]="entityData.form.cols" rowHeight="4rem">
+            <mat-grid-tile *ngFor="let f of field.children" [colspan]="f.cols" [rowspan]="f.rows" [style.background]="f.color" [formGroup]="item">
+                <!-- {{f | json}} -->
+                <field-builder style="width: 90% " [field]="f" [form]="item"></field-builder>
+            </mat-grid-tile>
+        </mat-grid-list>
+
+    </mat-expansion-panel>
+
+
+</mat-accordion>

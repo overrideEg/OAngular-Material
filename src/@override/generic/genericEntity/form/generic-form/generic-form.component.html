@@ -1,0 +1,8 @@
+<form id="print-section" [formGroup]="form" autocomplete="off">
+    <mat-grid-list [cols]="entityData.form.cols" rowHeight="5rem">
+        <mat-grid-tile *ngFor="let field of entityData.form.fields" [colspan]="field.cols" [rowspan]="field.type === 'array' ? field.rows + form.get(field.name).value.length :   field.rows" [style.background]="field.color">
+            <!-- {{field.rows * form.get(field.name).value | json}} -->
+            <field-builder style="width: 99% " *ngIf="field.displayIf?  field.displayIf.call() : 0===0" [field]="field" [form]="form"></field-builder>
+        </mat-grid-tile>
+    </mat-grid-list>
+</form>

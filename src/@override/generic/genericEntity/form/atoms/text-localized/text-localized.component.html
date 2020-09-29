@@ -1,0 +1,49 @@
+<div [formGroup]="form">
+    <div [formGroupName]='field.name'>
+
+        <mat-grid-list [cols]="entityData.form.cols" rowHeight="4rem" *ngIf="entityData.form.localizedAllFields">
+            <mat-grid-tile [colspan]="field.cols/Lang.length" [rowspan]="field.rows" *ngFor="let lang of Lang">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>{{field.label || field.name | translate}} {{'in ' + lang | translate}}</mat-label>
+                    <mat-label class="warn-color mat-subheading-1" *ngIf="field.required">*</mat-label>
+                    <input autocomplete="false" matInput *ngIf="!field.multiline" [attr.type]="field.type" [min]="field.min" [min]="field.max" [name]="isArray?field.name+date:field.name" [id]="isArray?field.name+date:field.name" (change)="entities.form = form" [formControlName]="lang"
+                        [errorStateMatcher]="matcher" placeholder="{{ field.label?field.label:field.name | translate}} {{'in ' + lang | translate}}">
+                    <textarea autocomplete="false" matInput *ngIf="field.multiline" [attr.type]="field.type" lines="3" [name]="isArray?field.name+date:field.name" [id]="isArray?field.name+date:field.name" (change)="entities.form = form" [formControlName]="lang" [errorStateMatcher]="matcher"
+                        placeholder="{{ field.label?field.label:field.name | translate}} {{'in ' + lang | translate}}"></textarea>
+
+                    <!-- <mat-hint class="warn-color mat-subheading-1">{{field.details }}</mat-hint> -->
+
+                    <mat-error *ngIf="!isValid">
+                        {{'Please enter a valid' |translate}} {{field.label |translate}}
+                    </mat-error>
+                    <mat-error *ngIf="isDirty">
+                        {{field.label |translate}} {{'is' |translate}} <strong>{{'required' |translate}}</strong>
+                    </mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+
+        <mat-form-field class="example-full-width" appearance="outline" *ngIf="!entityData.form.localizedAllFields">
+            <mat-label>{{field.label || field.name | translate}} {{'in ' + translate.currentLang | translate}}
+            </mat-label>
+            <mat-label class="warn-color mat-subheading-1" *ngIf="field.required">*</mat-label>
+            <input autocomplete="false" matInput *ngIf="!field.multiline" [attr.type]="field.type" [min]="field.min" [min]="field.max" [name]="isArray?field.name+date:field.name" [id]="isArray?field.name+date:field.name" (change)="entities.form = form" [formControlName]="translate.currentLang"
+                [errorStateMatcher]="matcher" placeholder="{{ field.label?field.label:field.name | translate}} {{'in ' + translate.currentLang | translate}}">
+            <textarea autocomplete="false" matInput *ngIf="field.multiline" [attr.type]="field.type" lines="3" [name]="isArray?field.name+date:field.name" [id]="isArray?field.name+date:field.name" (change)="entities.form = form" [formControlName]="translate.currentLang"
+                [errorStateMatcher]="matcher" placeholder="{{ field.label?field.label:field.name | translate}} {{'in ' + translate.currentLang | translate}}"></textarea>
+
+            <!-- <mat-hint class="warn-color mat-subheading-1">{{field.details }}</mat-hint> -->
+
+            <mat-error *ngIf="!isValid">
+                {{'Please enter a valid' |translate}} {{field.label |translate}} {{'in ' + translate.currentLang | translate}}
+            </mat-error>
+            <mat-error *ngIf="isDirty">
+                {{field.label |translate}} {{'in ' + translate.currentLang | translate}} {{'is' |translate}}
+                <strong>{{'required' |translate}}</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+
+
+</div>

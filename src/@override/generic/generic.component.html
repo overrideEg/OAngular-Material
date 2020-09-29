@@ -1,0 +1,69 @@
+<div class="page-layout carded fullwidth">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+        <!-- CONTENT HEADER -->
+        <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center">
+            <!-- <h2 class="m-0 warn"><strong>{{entityData?.name.plural | translate}}</strong></h2> -->
+
+            <h1 class="m-0 warn" *ngIf="!entities.isAdd && !entities.isEdit ">{{'View all' |translate}}
+                <strong>{{entityData.name.plural | translate}}</strong></h1>
+            <h1 class="m-0 warn" *ngIf="entities.isAdd">{{'Add' |translate}}
+                <strong>{{entityData.name.single | translate}}</strong></h1>
+            <h1 class="m-0 warn" *ngIf="entities.isEdit">{{'Edit' |translate}}
+                <strong>{{entityData.name.single | translate}}</strong></h1>
+        </div>
+        <!-- / CONTENT HEADER -->
+        <div class="content-card">
+            <!-- CONTENT TOOLBAR -->
+            <div class="toolbar px-24 py-8">
+                <mat-toolbar-row>
+                    <h4 class="m-0" *ngIf="!entities.isAdd && !entities.isEdit "><strong>{{entityData.name.plural | translate}}</strong></h4>
+                    <h4 class="m-0" *ngIf="entities.isAdd"><strong>{{entityData.name.single | translate}}</strong></h4>
+                    <h4 class="m-0" *ngIf="entities.isEdit"> <strong>{{entityData.name.single | translate}}</strong>
+                    </h4>
+                    <span class="example-spacer"></span>
+                    <button class="actionButton" mat-mini-fab color="primary" (click)="submit()" *ngIf="entities.isAdd || entities.isEdit" [disabled]="entities.form.invalid" matTooltip="{{'Save' |translate}}  {{entityData.name.single | translate}}">
+                        <mat-icon class="example-icon " aria-hidden="false">save</mat-icon>
+                    </button>
+                    <button class="actionButton" mat-mini-fab color="primary" *ngIf="entities.isAdd || entities.isEdit" [disabled]="entities.form.invalid" matTooltip="{{'Save Draft ' |translate}}  {{entityData.name.single | translate}}">
+                        <mat-icon class="example-icon " aria-hidden="false">save_alt</mat-icon>
+                    </button>
+                    <button class="actionButton" mat-mini-fab color="primary" [routerLink]="[entityData.route,'add']" routerLinkActive="warn" *ngIf="entityData.add &&!entities.isAdd" matTooltip="{{'Add New' |translate}}">
+                        <mat-icon class="example-icon " aria-hidden="false">add_circle</mat-icon>
+                    </button>
+                    <button class="actionButton" mat-mini-fab color="primary" [routerLink]="[entityData.route,'edit',entities.entityId]" routerLinkActive="warn" *ngIf="entityData.edit &&!entities.isEdit" [disabled]="!entities.entityId" matTooltip="{{'Edit Selected' |translate}}">
+                        <mat-icon class="example-icon" aria-hidden="false">edit</mat-icon>
+                    </button>
+                    <button class="actionButton" mat-mini-fab color="primary" [ routerLink]="[entityData.route,'view',entities.entityId]" routerLinkActive="warn" *ngIf="entityData.view &&!entities.isView  &&!entities.isAdd " [disabled]="!entities.entityId" matTooltip="{{'View Selected' |translate}}">
+                        <mat-icon class="example-icon" aria-hidden="false">remove_red_eye</mat-icon>
+                    </button>
+                    <button class="actionButton" mat-mini-fab color="primary" [routerLink]="[entityData.route,'all']" routerLinkActive="warn" *ngIf="entityData.table &&!entities.isAll" matTooltip="{{'View List' |translate}}">
+                        <mat-icon class="example-icon" aria-hidden="false">list</mat-icon>
+                    </button>
+                    <button class="actionButton" mat-mini-fab color="primary" *ngIf="entityData.upload  &&entities.isAll" matTooltip="{{'Upload Excel File' |translate}}" (click)="openBottomSheet()">
+                        <mat-icon class="example-icon" aria-hidden="false">arrow_upward</mat-icon>
+                    </button>
+                    <button class="actionButton" mat-mini-fab color="primary" *ngIf="entityData.export  &&entities.isAll" (click)="export()" matTooltip="{{'Export Excel File' |translate}}">
+                        <mat-icon class="example-icon" aria-hidden="false">arrow_downward</mat-icon>
+                    </button>
+                </mat-toolbar-row>
+
+            </div>
+            <!-- / CONTENT TOOLBAR -->
+
+            <!-- CONTENT -->
+            <div class="content p-24">
+                <router-outlet></router-outlet>
+            </div>
+            <!-- / CONTENT -->
+        </div>
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

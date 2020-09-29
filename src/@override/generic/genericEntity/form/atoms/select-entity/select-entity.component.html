@@ -1,0 +1,20 @@
+<div [formGroup]="form">
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>{{field.label || field.name | translate}}</mat-label>
+        <mat-label class="warn-color mat-subheading-1" *ngIf="field.required">*</mat-label>
+
+
+        <input autocomplete="false" matInput [name]="field.name" readonly [attr.disabled]="field.disabled" fieldSize="large" shape="round" placeholder="{{ field.name | translate}}" [value]="fieldVal" (click)="openBottomSheet()">
+
+
+
+        <mat-hint class="warn-color mat-subheading-1">{{field.details }}</mat-hint>
+        <!-- 
+        <mat-error *ngIf="!isValid">
+            {{'Please enter a valid' |translate}} {{field.label |translate}}
+        </mat-error>
+        <mat-error *ngIf="isDirty">
+            {{field.label |translate}} {{'is' |translate}} <strong>{{'required' |translate}}</strong>
+        </mat-error> -->
+    </mat-form-field>
+</div>

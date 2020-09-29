@@ -1,0 +1,15 @@
+<div [formGroup]="form">
+    <div [ngSwitch]="field.type">
+
+        <dropDown id="dropDown" *ngSwitchCase="'dropdown'" [isArray]='isArray' [field]="field" [form]="form"></dropDown>
+        <checkBox id="checkBox" *ngSwitchCase="'checkbox'" [isArray]='isArray' [field]="field" [form]="form"></checkBox>
+        <date id="date" *ngSwitchCase="'date'" [isArray]='isArray' [field]="field" [form]="form"></date>
+        <array id="array" *ngSwitchCase="'array'" [isArray]='isArray' [field]="field" [form]="form"></array>
+        <group id="group" *ngSwitchCase="'group'" [isArray]='isArray' [field]="field" [form]="form"></group>
+        <file id="file" *ngSwitchCase="'file'" [isArray]='isArray' [field]="field" [form]="form"></file>
+        <textLocalized id="textLocalized" *ngSwitchCase="'textLocalized'" [isArray]='isArray' [field]="field" [form]="form"></textLocalized>
+        <entity id="entity" *ngSwitchCase="'entity'" [isArray]='isArray' [field]="field" [form]="form"></entity>
+        <textbox id="text" *ngSwitchDefault [isArray]='isArray' [field]="field" [form]="form"></textbox>
+        <mat-hint class="warn-color mat-subheading-1">{{field.details }}</mat-hint>
+
+    </div>

@@ -1,0 +1,14 @@
+// Import Fuse core library
+@import "@fuse/scss/core";
+// Import app.theme.scss
+@import "app/app.theme";
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-material.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham-dark.css";
+@import "~ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
+@import "~ag-grid-community/dist/styles/ag-theme-alpine.css";
+mat-bottom-sheet-container {
+    width: 100vw !important;
+    transform: translateY(-15vh) !important;
+}

@@ -1,0 +1,8 @@
+<h5 class="warn-color mat-subheading-1">{{field.label || field.name | translate}} <strong class="warn-color mat-subheading-1" *ngIf="field.required">*</strong></h5>
+
+<mat-grid-list [cols]="12" rowHeight="4rem">
+    <mat-grid-tile *ngFor="let f of field.children" [colspan]="f.cols" [rowspan]="f.rows" [style.background]="f.color" [formGroup]="form">
+        <!-- {{f | json}} -->
+        <field-builder style="width: 90%" [field]="f" [form]="form"></field-builder>
+    </mat-grid-tile>
+</mat-grid-list>

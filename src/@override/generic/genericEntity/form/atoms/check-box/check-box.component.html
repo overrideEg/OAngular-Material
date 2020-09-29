@@ -1,0 +1,9 @@
+<div [formGroup]="form">
+
+
+    <mat-checkbox [name]="isArray?field.name+date:field.name" [id]="isArray?field.name+date:field.name" (change)="entities.form = form" [formControlName]="field.name">{{ field.label?field.label:field.name | translate}}</mat-checkbox>
+
+
+
+
+</div>

@@ -1,0 +1,53 @@
+@import "@fuse/scss/core";
+.top-bg {
+    height: 225px !important;
+}
+
+.actionButton {
+    margin: 0 14px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.page-layout.carded {
+    width: 100vw !important;
+}
+
+.content {
+    @media only screen and (min-width: 960px) {
+        /* styles for browsers larger than 960px; */
+        width: 89vw;
+    }
+    @media only screen and (min-width: 1440px) {
+        /* styles for browsers larger than 1440px; */
+        width: 92vw;
+    }
+    @media only screen and (min-width: 2000px) {
+        /* for sumo sized (mac) screens */
+        width: 96vw;
+    }
+    @media only screen and (max-device-width: 480px) {
+        /* styles for mobile browsers smaller than 480px; (iPhone) */
+        width: 96vw;
+    }
+    @media only screen and (device-width: 768px) {
+        /* default iPad screens */
+    }
+    /* different techniques for iPad screening */
+    @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+        /* For portrait layouts only */
+    }
+    @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+        /* For landscape layouts only */
+    }
+}
+
+router-outlet {
+    transition: ease-in-out 1s
+}
+
+.page-layout {
+    animation: bounceIn 2s;
+}

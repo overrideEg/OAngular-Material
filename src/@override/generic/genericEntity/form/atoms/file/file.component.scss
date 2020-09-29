@@ -1,0 +1,73 @@
+.drop-container {
+    background: #fff;
+    border-radius: 2px;
+    height: 100%;
+    width: 100%;
+    box-shadow: 1px 2px 20px rgba(255, 227, 227, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #c0c4c7;
+}
+
+p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #c0c4c7;
+}
+
+.upload-button {
+    display: inline-block;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #b11500;
+}
+
+.upload-button input {
+    display: none;
+}
+
+.dropzone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    background: white;
+    margin: 10px 0;
+}
+
+.dropzone.hovering {
+    border: 2px solid #7c2a04;
+    color: #dadada !important;
+}
+
+progress::-webkit-progress-value {
+    transition: width 0.1s ease;
+}
+
+.im {
+    position: relative;
+    display: inline-block img {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        z-index: 1;
+    }
+    button {
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        opacity: 0.8;
+        z-index: 10;
+    }
+}
+
+img {
+    max-width: 25vw;
+}
+
+nb-progress-bar {
+    display: inline;
+}

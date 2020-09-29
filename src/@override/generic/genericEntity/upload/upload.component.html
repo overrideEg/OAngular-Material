@@ -1,0 +1,9 @@
+<div class="drop-container dropzone" dropZone (dropped)="uploadFile($event)">
+    <p class="m-0">
+        {{'Drag a file here or' |translate}}
+        <label class="upload-button">
+            <input type="file" accept=".xlsx, .xls" type="file" (change)="uploadFile($event)">
+            {{'browse'|translate}}
+        </label> {{'to upload' |translate}}.
+    </p>
+</div>

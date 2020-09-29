@@ -1,0 +1,21 @@
+{
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "outDir": "./out-tsc/app",
+        "types": [
+            "node"
+        ]
+    },
+    "files": [
+        "src/main.ts",
+        "src/polyfills.ts",
+    ],
+    "include": [
+        "src/**/*.d.ts",
+        "src/**/*.ts",
+        "src/@override/**/*.ts"
+    ],
+    "exclude": [
+        "**/*.spec.ts"
+    ]
+}

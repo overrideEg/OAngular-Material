@@ -1,0 +1,49 @@
+<div [formGroup]="form">
+    <mat-label>{{field.label || field.name | translate}}</mat-label>
+    <mat-label class="warn-color mat-subheading-1" *ngIf="field.required">*</mat-label>
+    <div class="row">
+        <div class="col-10  text-center">
+            <!-- <input type="file" (change)="uploadFile($event)" nbButton fullWidth hero [shape]="'round'" [fieldSize]="'medium'" nbInput /> -->
+            <p *ngIf="! form.get(this.field.name).value">
+                <label class="upload-button">
+                    <input type="file" accept="field.view+'/'" [multiple]='field.multiple' (change)="uploadFile($event)" [accept]="field.accept" formenctype="multipart/form-data">
+                    {{'Select File'|translate}}
+                </label> {{'to upload' |translate}}.
+                <!-- <nb-progress-bar [value]="percentage | async" [size]='"tiny"' [status]='"primary"'></nb-progress-bar> -->
+            </p>
+            <p *ngIf="form.get(this.field.name).value">
+                {{'Delete Current File To Upload Other One' |translate}}.
+            </p>
+        </div>
+        <!-- <div class="col-1">
+            <nb-action *ngIf="form.value[field.name]" [icon]="viewIcon" [nbPopover]="imageView" nbPopoverTrigger="hover"></nb-action>
+        </div>
+        <div class="col-1">
+            <nb-action *ngIf="form.value[field.name]" [icon]="trashIcon" (click)="deleteFile(form.value[field.name])">
+            </nb-action>
+        </div> -->
+
+
+        <button mat-icon-button color="primary">
+            <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button color="primary">
+            <mat-icon>remove_red_eye            </mat-icon>
+        </button>
+    </div>
+
+    <br>
+
+</div>
+
+<ng-template #imageView>
+
+
+    <!-- <img class="img-thumbnail rounded  " /> -->
+    <picture>
+        <img [src]="form.get(this.field.name).value" class="img-fluid img-thumbnail rounded" alt="...">
+    </picture>
+
+    <a class="text-center " *ngIf="form.get(this.field.name).value " [href]="form.get(this.field.name).value " target="_blank ">{{'click Here To Download' |translate}}</a>
+
+</ng-template>

@@ -1,0 +1,87 @@
+.card {
+    position: relative;
+    margin-top: -5% !important;
+}
+
+// .modal.top-sheet {
+//     top: 0% !important;
+//     right: 0% !important;
+//     bottom: 0% !important;
+//     transition: transform cubic-bezier(0.22, 0.61, 0.36, 1) .2s;
+//     will-change: transform;
+//     transform: translate(0, -100%) scale(1) !important;
+//     width: 50%;
+//     height: 100% !important;
+//     opacity: 1 !important;
+// }
+// .modal.top-sheet.open {
+//     transition: transform cubic-bezier(0.22, 0.61, 0.36, 1) .35s .25s;
+// }
+// .modal.top-sheet.open:not([style*="display: none"]):not([style*="opacity: 0;"]) {
+//     transform: translate(0, 0%) !important;
+// }
+.drop-container {
+    background: #fff;
+    border-radius: 6px;
+    height: 150px;
+    width: 100%;
+    box-shadow: 1px 2px 20px hsla(0, 0%, 4%, .1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #c0c4c7;
+}
+
+p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #c0c4c7;
+}
+
+.upload-button {
+    display: inline-block;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #5754a3;
+}
+
+.upload-button input {
+    display: none;
+}
+
+.dropzone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    background: white;
+    margin: 10px 0;
+}
+
+.dropzone.hovering {
+    border: 2px solid #f16624;
+    color: #dadada !important;
+}
+
+progress::-webkit-progress-value {
+    transition: width 0.1s ease;
+}
+
+.im {
+    position: relative;
+    display: inline-block img {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        z-index: 1;
+    }
+    button {
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        opacity: 0.8;
+        z-index: 10;
+    }
+}

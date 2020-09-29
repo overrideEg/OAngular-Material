@@ -1,0 +1,14 @@
+<div *ngIf="loading" style="display: flex; justify-content: center; vertical-align: middle;">
+    <mat-spinner></mat-spinner>
+
+</div>
+
+<div *ngIf="!loading">
+    <input class="example-full-width" matInput appearance="outline" placeholder="{{'Search In Table' |translate}}" [(ngModel)]="searchValue" (change)="filter()">
+    <hr>
+    <ag-grid-angular #agGrid id="myGrid" style="width: 100%; height: 650px;" class="ag-theme-material" [columnDefs]="entityData.table.columnDefs" [rowData]="entityData.table.rowData ? entityData.table.rowData: rowData" [enableRtl]="override.isRTL()" [defaultColDef]="defaultColDef"
+        [overlayLoadingTemplate]="overlayLoadingTemplate" (gridReady)="onGridReady($event)" rowSelection="single" [singleClickEdit]="true" [suppressClickEdit]="false" [frameworkComponents]="frameworkComponents" (cellEditingStopped)="cellEditingStopped($event)"
+        [pagination]="entityData.table.paginated" (selectionChanged)="onSelectionChanged()" [suppressRowClickSelection]="true" (firstDataRendered)="onFirstDataRendered($event)" (paginationChanged)="onPaginationChanged()" [paginationPageSize]="entityData.table.paginationPageSize"
+        (rowSelected)="rowSelected($event)" [singleClickEdit]="true" [suppressClickEdit]="false">
+    </ag-grid-angular>
+</div>

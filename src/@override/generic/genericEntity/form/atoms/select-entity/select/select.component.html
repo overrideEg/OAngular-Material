@@ -1,0 +1,10 @@
+<h5 class="center">{{field.label || field.name | translate}} <strong class="warn-color mat-subheading-1" *ngIf="field.required">*</strong></h5>
+<input class="example-full-width" style="padding-top: 10px;" matInput appearance="outline" placeholder="{{'Search In Table' |translate}}" [(ngModel)]="searchValue" (change)="filter()">
+<hr>
+<ag-grid-angular #agGrid id="myGrid" style="width: 100%; height: 500px;" [attr.class]="class" [columnDefs]="columnDefs" [rowData]="rowData" [enableRtl]='override.isRTL()' (gridReady)="onGridReady($event)" rowSelection="single" [pagination]="true" [suppressRowClickSelection]="true"
+    [rowSelection]='rowSelection' (selectionChanged)="onSelectionChanged($event)" [paginationAutoPageSize]="true" (rowSelected)="rowSelected($event)">
+</ag-grid-angular>
+
+<button mat-flat-button color="warn" (click)="selectRow()">
+    {{'select' |translate}}
+</button>
