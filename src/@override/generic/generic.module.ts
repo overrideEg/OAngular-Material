@@ -44,6 +44,8 @@ import { DateComponent } from './genericEntity/form/atoms/date/date.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AutoCompleteComponent } from './genericEntity/form/atoms/auto-complete/auto-complete.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -63,7 +65,8 @@ const matModules = [
   MatExpansionModule,
   MatDatepickerModule,
   MatListModule,
-   MatProgressSpinnerModule
+   MatProgressSpinnerModule,
+   MatAutocompleteModule
 ]
 const fuseModules = [
   FuseSidebarModule,
@@ -88,7 +91,8 @@ const fuseModules = [
     SelectEntityComponent,
     SelectComponent,
     GroupComponent,
-    DateComponent
+    DateComponent,
+    AutoCompleteComponent
   ],
   imports: [
     GenericRoutingModule,

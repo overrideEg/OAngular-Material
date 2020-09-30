@@ -20,7 +20,7 @@ export interface AbstractField {
     selectOptions?:{
         fromSelector: string;
         entityGetUrl?: string;
-        optionName: string;
+        optionName?: string;
         options?:string[];
         columns?: ColDef[];
         subObjectName?: string;
@@ -28,6 +28,7 @@ export interface AbstractField {
         exludeView?: string[]
         localized?:string []
     },
+  
     children?: AbstractField[],
     min?: number;
     max?: number;

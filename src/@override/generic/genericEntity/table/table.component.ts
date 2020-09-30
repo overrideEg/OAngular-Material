@@ -24,31 +24,34 @@ export class TableComponent implements OnDestroy {
     public override: OverrideService,
     private entity: EntityService,
     private _snackBar: MatSnackBar) {
+    let routeName;
+
     router.events.subscribe((val) => {
       this.overlayLoadingTemplate =
         '<span class="ag-overlay-loading-center">Please wait while your rows are loading</span>';
 
-      
+
       // see also 
       let nav: typeof ActivationEnd
       if (val instanceof NavigationEnd) {
-        
+
         this.rowData = [];
         this.loading = true
         this.init();
-        
+
       }
-      if (val instanceof ActivationEnd) {
+      if (val instanceof ActivationEnd && !routeName && val.snapshot['_lastPathIndex'] === 1) {
         nav = ActivationEnd
-        let route = val.snapshot.params.route
-        let entity = this.entities.allEntities.find(entity => entity.route.includes(route))
+         routeName = val.snapshot.params.route
+        let entity = this.entities.allEntities.find(entity => entity.route.includes(routeName))
         this.entityData = entity;
       }
     });
+
   }
   ngOnDestroy(): void {
     this.rowData = [];
-    delete this.entityData ;
+    delete this.entityData;
 
   }
 

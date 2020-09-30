@@ -16,10 +16,10 @@ export class TextboxComponent implements OnInit {
   @Input() form: FormGroup;
   @Input() isArray: boolean;
 
-  get isValid() { return this.form.get(this.field.name).valid && this.form.get(this.field.name).touched;  }
-  get isDirty() { return this.form.get(this.field.name).dirty && this.form.get(this.field.name).touched;  }
   ngOnInit(): void {
   }
+  get isValid() { return this.form.get(this.field.name).valid && this.form.get(this.field.name).touched;  }
+  get isDirty() { return this.form.get(this.field.name).dirty && this.form.get(this.field.name).touched;  }
   date = Date.now()
   matcher = new MyErrorStateMatcher();
 
