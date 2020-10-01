@@ -1,7 +1,7 @@
 <h1 class="accent-color">{{field.label || field.name | translate}} <strong class="warn-color" *ngIf="field.required">*</strong></h1>
 
 <mat-accordion class="example-headers-align" [displayMode]="'flat'">
-    <mat-expansion-panel *ngFor="let item of Forms.controls; let i=index;">
+    <mat-expansion-panel *ngFor="let item of Forms.controls; let i=index;" [expanded]="i===0">
         <mat-expansion-panel-header>
             <mat-panel-title>
                 <h5 class="warn-color mat-subheading-1"> {{field.label}} : {{i+1}}</h5>

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
 import { EntityData } from './interfaces/entityData';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
@@ -8,19 +8,21 @@ import { GridApi } from 'ag-grid-community';
 import { AbstractField } from './interfaces/field';
 import { Lang } from './interfaces/lang.enum';
 import { DatePipe } from '@angular/common';
+import { ArrayComponent } from '../generic/genericEntity/form/atoms/array/array.component';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EntitiesService {
+export class EntitiesService  {
   entityData: EntityData;
+  arrayComponent: ArrayComponent;
 
   constructor(
     private translate: TranslateService,
     private router: Router,
     private fb: FormBuilder,
     private datepipe: DatePipe) { }
-
+   
 
   public get isAdd(): boolean {
     return this.router.url.includes('add');
@@ -41,7 +43,6 @@ export class EntitiesService {
   public allEntities: EntityData[];
 
 
-
   form: FormGroup = new FormGroup({});
   saved: boolean = false;
 
@@ -59,17 +60,11 @@ export class EntitiesService {
 
         let ctrl = {};
         if (this.entityData.form.localizedAllFields === true) {
-          // tslint:disable-next-line: forin
-          // for (const lang in Lang) {
-
-          // }
-
+         
           ctrl['ar'] = this.fb.control(
             { value: f.initialValue ? f.initialValue : '' || '', disabled: f.disabled }, f.validators ? f.validators : []);
           ctrl['en'] = this.fb.control(
             { value: f.initialValue ? f.initialValue : '' || '', disabled: f.disabled }, f.validators ? f.validators : []);
-
-
 
         } else {
 
@@ -91,14 +86,6 @@ export class EntitiesService {
         f.children.forEach(
           (child) => {
             childs[child.name] = this.DetectField(child);
-          
-            // this.fb.control(
-            //   {
-            //     value: child.initialValue || '',
-            //     disabled: child.disabled,
-            //   },
-            //   child.validators ? child.validators : []
-            // );
           },
           f.validators ? f.validators : []
         );

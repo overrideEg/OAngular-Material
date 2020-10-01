@@ -34,7 +34,7 @@ export class RouteGuard implements CanActivate {
 
 
 
-    this.router.events.subscribe((val) => {
+     this.router.events.subscribe((val) => {
 
       let nav: typeof ActivationEnd
 
@@ -48,6 +48,7 @@ export class RouteGuard implements CanActivate {
         let userType = UserType[userTypeStored]
 
         // check add permission
+
         if (route === 'add' && entity.permissions && !entity.permissions.add.includes(userType)) {
           this.router.navigate(['/'])
           return false
@@ -72,6 +73,6 @@ export class RouteGuard implements CanActivate {
     return true;
   }
 
-  
+
 
 }

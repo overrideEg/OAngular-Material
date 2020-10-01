@@ -28,7 +28,7 @@ export interface EntityData {
     cols: number,
   },
   permissions?: {
-    edit?: UserType[] 
+    edit?: UserType[]
     view?: UserType[]
     add?: UserType[]
   }

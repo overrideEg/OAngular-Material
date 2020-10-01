@@ -27,7 +27,7 @@
                     <h4 class="m-0" *ngIf="entities.isEdit"> <strong>{{entityData.name.single | translate}}</strong>
                     </h4>
                     <span class="example-spacer"></span>
-                    <button class="actionButton" mat-mini-fab color="primary" (click)="submit()" *ngIf="entities.isAdd || entities.isEdit" [disabled]="entities.form.invalid" matTooltip="{{'Save' |translate}}  {{entityData.name.single | translate}}">
+                    <button class="actionButton" mat-mini-fab color="primary" [disabled]="entities.saved" (click)="submit()" *ngIf="entities.isAdd || entities.isEdit" [disabled]="entities.form.invalid" matTooltip="{{'Save' |translate}}  {{entityData.name.single | translate}}">
                         <mat-icon class="example-icon " aria-hidden="false">save</mat-icon>
                     </button>
                     <button class="actionButton" mat-mini-fab color="primary" *ngIf="entities.isAdd || entities.isEdit" [disabled]="entities.form.invalid" matTooltip="{{'Save Draft ' |translate}}  {{entityData.name.single | translate}}">

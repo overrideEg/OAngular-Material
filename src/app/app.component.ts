@@ -149,7 +149,6 @@ export class AppComponent implements OnInit, OnDestroy {
         //     }
         //   }
 
-        console.log(this.utils.isAuth())
         // Subscribe to config changes
         this._fuseConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))

@@ -1,0 +1,18 @@
+<div [formGroup]="form">
+
+    <mat-form-field class="example-full-width" appearance="outline">
+        <input type="text" placeholder="{{field.label || field.name | translate}}" matInput [formControlName]="field.name" [matAutocomplete]="auto" [matAutocompletePosition]="'auto'">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions" (onSelectionChange)="onSelectionChange(option)" [value]="selectedOption">
+                {{option}}
+            </mat-option>
+        </mat-autocomplete>
+
+        <mat-error *ngIf="!isValid">
+            {{'Please enter a valid' |translate}} {{field.label |translate}}
+        </mat-error>
+        <mat-error *ngIf="isDirty">
+            {{field.label |translate}} {{'is' |translate}} <strong>{{'required' |translate}}</strong>
+        </mat-error>
+    </mat-form-field>
+</div>

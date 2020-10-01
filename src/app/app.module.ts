@@ -25,7 +25,6 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { AdminGuard } from './guards/admin.guard';
 import { DatePipe } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
 const appRoutes: Routes = [
     {
         path: '',
@@ -68,7 +67,8 @@ const appRoutes: Routes = [
 
 @NgModule({
     declarations: [
-        AppComponent,],
+        AppComponent,
+        ],
     imports: [
         // GenericModule,
         BrowserModule,

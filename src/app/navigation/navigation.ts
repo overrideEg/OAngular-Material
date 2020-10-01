@@ -39,7 +39,115 @@ export const navigation: FuseNavigation[] = [
           
         ]
     },
+    {
+        id       : 'hotel',
+        title    : 'Hotel Data',
+        translate: 'NAV.hotelData',
+        type     : 'group',
+        icon     : 'hotel',
+        children: [
+            {
+                id       : 'Category',
+                title    : 'Category',
+                translate: 'NAV.category',
+                type     : 'item',
+                icon     : 'category',
+                url  : '/generic/Category'
+        
+            },
+            
+            {
+                id       : 'Hotel',
+                title    : 'Hotel',
+                translate: 'NAV.Hotel',
+                type     : 'item',
+                icon     : 'local_hotel',
+                url  : '/generic/Hotel'
+        
+            },
+            {
+                id       : 'RoomType',
+                title    : 'RoomType',
+                translate: 'NAV.RoomType',
+                type     : 'item',
+                icon     : 'local_hotel',
+                url  : '/generic/RoomType'
+        
+            },
+            {
+                id       : 'Meal',
+                title    : 'Meal',
+                translate: 'NAV.Meal',
+                type     : 'item',
+                icon     : 'fastfood',
+                url  : '/generic/Meal'
+        
+            },
+        ]
+    },
+    {
+        id       : 'places',
+        title    : 'Places Data',
+        translate: 'NAV.placeData',
+        type     : 'group',
+        icon     : 'place',
+        children: [
+            {
+                id       : 'Country',
+                title    : 'Country',
+                translate: 'NAV.Country',
+                type     : 'item',
+                icon     : 'location_city',
+                url  : '/generic/Country'
+        
+            },
+            {
+                id       : 'City',
+                title    : 'City',
+                translate: 'NAV.City',
+                type     : 'item',
+                icon     : 'location_city',
+                url  : '/generic/City'
+        
+            },
+        ]
+    },
+    {
+        id       : 'Trip',
+        title    : 'Trips Data',
+        translate: 'NAV.tripData',
+        type     : 'group',
+        icon     : 'trip_origin',
+        children: [
+            {
+                id       : 'Trip',
+                title    : 'Trip',
+                translate: 'NAV.Trip',
+                type     : 'item',
+                icon     : 'trip_origin',
+                url  : '/generic/Trip'
+        
+            },
+            {
+                id       : 'ReservationTrip',
+                title    : 'ReservationTrip',
+                translate: 'NAV.ReservationTrip',
+                type     : 'item',
+                icon     : 'person_outline',
+                url  : '/generic/ReservationTrip'
+        
+            },
+        ]
+    },
+    {
+        id       : 'ContactUs',
+        title    : 'ContactUs',
+        translate: 'NAV.ContactUs',
+        type     : 'item',
+        icon     : 'contact_support',
+        url  : '/generic/ContactUs'
 
+    },
     // {
     //     id       : 'applications',
     //     title    : 'Applications',

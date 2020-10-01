@@ -1,4 +1,4 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { EntitiesService } from '../utils/entities.service';
 import { Router, ActivationEnd } from '@angular/router';
 import { EntityData } from '../utils/interfaces/entityData';
@@ -13,7 +13,7 @@ import { CsvExportParams } from 'ag-grid-community';
   templateUrl: './generic.component.html',
   styleUrls: ['./generic.component.scss']
 })
-export class GenericComponent implements OnChanges {
+export class GenericComponent   {
 
   entityData: EntityData;
   constructor(
@@ -21,28 +21,22 @@ export class GenericComponent implements OnChanges {
     public entities: EntitiesService,
     private dataService: EntityService,
     private _bottomSheet: MatBottomSheet) {
-    router.events.subscribe((val) => {
+     router.events.subscribe((val) => {
       // see also 
       let nav: typeof ActivationEnd
       if (val instanceof ActivationEnd) {
         nav = ActivationEnd
         let route = val.snapshot.params.route
         let entity = this.entities.allEntities.find(entity => entity.route.includes(route))
-        this.entityData = entity;        
+        this.entityData = entity;
       }
     });
+   
   }
-
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-
-  }
-
-
+ 
   submit() {
     console.log(this.entities.form.value);
-    
+
     this.entityData.form.fields.forEach((field) => {
       if (field.type === FieldType.number)
         this.entities.form.get(field.name).setValue(+this.entities.form.get(field.name).value);
@@ -61,7 +55,8 @@ export class GenericComponent implements OnChanges {
   }
 
   async save(value: any) {
-    let saved = await this.dataService.save(this.entityData.apiSelector, value) 
+    this.entities.saved = true
+    let saved = await this.dataService.save(this.entityData.apiSelector, value)
     if (saved.status === 200 || saved.status === 201) {
       this.entities.form.patchValue(saved);
       setTimeout(() => this.router.navigate([this.entityData.route]), 1000);
